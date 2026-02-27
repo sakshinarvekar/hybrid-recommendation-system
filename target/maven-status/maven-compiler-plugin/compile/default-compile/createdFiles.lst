@@ -1,0 +1,12 @@
+com\example\recommendation\repository\ProductRepository.class
+com\example\recommendation\kafka\KafkaProducer.class
+com\example\recommendation\Interaction.class
+com\example\recommendation\Product.class
+com\example\recommendation\service\RecommendationService.class
+com\example\recommendation\service\RedisService.class
+com\example\recommendation\User.class
+com\example\recommendation\RecommendationApplication.class
+com\example\recommendation\repository\UserRepository.class
+com\example\recommendation\controller\RecommendationController.class
+com\example\recommendation\kafka\KafkaConsumer.class
+com\example\recommendation\repository\InteractionRepository.class
