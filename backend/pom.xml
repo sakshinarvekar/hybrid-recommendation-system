@@ -60,8 +60,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+            <version>1.18.38</version>
+            <scope>provided</scope>
+            </dependency>
 
         <!-- Spring Boot Test -->
         <dependency>
@@ -81,12 +82,19 @@
 
             <!-- Compiler Plugin -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.1</version>
-                <configuration>
-                    <release>22</release>
-                </configuration>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.14.1</version>
+            <configuration>
+                <release>22</release>
+                <annotationProcessorPaths>
+                <path>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                    <version>1.18.38</version>
+                </path>
+                </annotationProcessorPaths>
+            </configuration>
             </plugin>
         </plugins>
     </build>
