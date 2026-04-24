@@ -1,4 +1,4 @@
-package com.example.recommendation.controller;
+package com.example.recommendation.Controller;
 
 import com.example.recommendation.Interaction;
 import com.example.recommendation.Product;
