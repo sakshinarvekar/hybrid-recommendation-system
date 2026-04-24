@@ -1,12 +1,15 @@
 package com.example.recommendation.service;
 
+import com.example.recommendation.Interaction;
+import com.example.recommendation.Product;
 import com.example.recommendation.repository.InteractionRepository;
 import com.example.recommendation.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RecommendationService {
@@ -17,13 +20,16 @@ public class RecommendationService {
     @Autowired
     private ProductRepository productRepository;
 
-    // Temporary simple recommendation logic
     public List<Long> computeRecommendations(Long userId) {
-        // For now, return first 5 products
-        List<Long> recommendations = new ArrayList<>();
-        productRepository.findAll().stream().limit(5).forEach(p -> recommendations.add(p.getId()));
-        return recommendations;
-    }
+        Set<Long> seen = interactionRepository.findAll().stream()
+                .filter(i -> i.getUserId().equals(userId))
+                .map(Interaction::getProductId)
+                .collect(Collectors.toSet());
 
-    // You will later update this to use Collaborative & Content-based filtering
+        return productRepository.findAll().stream()
+                .filter(p -> !seen.contains(p.getId()))
+                .limit(5)
+                .map(Product::getId)
+                .collect(Collectors.toList());
+    }
 }
